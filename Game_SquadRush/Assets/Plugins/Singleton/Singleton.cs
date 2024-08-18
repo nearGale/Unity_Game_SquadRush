@@ -3,24 +3,22 @@ using System;
 public abstract class Singleton<T> : IDisposable where T : class, new()
 {
     private static T _instance;
-    protected static bool hasCreated = false;
 
-    public static T Instance => _instance;
-
-    public static T Create(T value = null)
+    public static T Instance
     {
-        if (!hasCreated)
+        get
         {
-            _instance = value ?? new();
-            hasCreated = true;
+            _instance ??= new T();
+            return _instance;
         }
-
-        return _instance;
     }
 
     public virtual void Dispose()
     {
-        hasCreated = false;
+        OnDispose();
         _instance = null;
     }
+
+    protected virtual void OnDispose() { }
 }
+
