@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace test
+namespace RushRush
 {
     // 简单测试一下大厅同步
     public class PlayerController : NetworkBehaviour
@@ -17,7 +17,7 @@ namespace test
         void PlayerIdChanged(int oldVal, int newVal)
         {
             id = newVal;
-            LobbyLogController.Instance.AppendLog($"id:{oldVal} -> {newVal}");
+            GameHelper_Common.UILog($"id:{oldVal} -> {newVal}");
         }
 
         [ClientRpc]
