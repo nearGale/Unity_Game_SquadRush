@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEngine;
-using Utils.Extensions;
 using Mirror;
 
 namespace RushRush
@@ -29,5 +28,71 @@ namespace RushRush
 
         }
         #endregion
+
+        #region Client
+
+        public Vector3 targetPos;
+
+        #region 数据同步
+
+        [SyncVar(hook = nameof(PlayerPosChanged))]
+        public Vector3 pos;
+
+        void PlayerPosChanged(Vector3 oldVal, Vector3 newVal)
+        {
+            transform.position = pos;
+        }
+
+        [SyncVar(hook = nameof(PlayerForwardChanged))]
+        public Vector3 forward;
+
+        void PlayerForwardChanged(Vector3 oldVal, Vector3 newVal)
+        {
+            transform.forward = forward;
+        }
+
+        #endregion 数据同步
+
+        private void Start()
+        {
+            if(isLocalPlayer)
+                ClientRoomSystem.Instance.localPlayerController = this;
+        }
+
+        private void Update()
+        {
+            if (isLocalPlayer)
+            {
+                if(targetPos != Vector3.zero)
+                {
+                    var speed = 0.02f;
+                    var dir = targetPos - transform.position;
+                    if(dir.magnitude < speed)
+                    {
+                        transform.position = targetPos;
+                    }
+                    else
+                    {
+                        var nextPos = transform.position + dir.normalized * speed;
+                        Ray ray = new Ray(nextPos + Vector3.up * 10, Vector3.down);
+                        RaycastHit hit;
+                        if (Physics.Raycast(ray, out hit))
+                        {
+                            transform.position = hit.point;
+                        }
+                        else
+                        {
+                            transform.position = nextPos;
+                        }
+                        transform.LookAt(targetPos);
+                    }
+                    pos = transform.position;
+                    forward = transform.forward;
+                }
+            }
+        }
+
+
+        #endregion Client
     }
 }

@@ -28,10 +28,8 @@ namespace RushRush
 
         #endregion
 
-
         private void Start()
         {
-            //pos = transform.position;
         }
 
         private void Update()
@@ -47,6 +45,7 @@ namespace RushRush
                     SetData(Random.Range(0, 10));
                 }
             }
+
         }
 
     }

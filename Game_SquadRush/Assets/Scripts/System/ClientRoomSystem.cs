@@ -26,6 +26,9 @@ namespace RushRush
         /// <summary> 在服务器中的 playerId（本次服务器启动时） </summary>
         public uint playerId;
 
+        /// <summary> 本地玩家 playerController </summary>
+        public RushPlayer localPlayerController;
+
         #region system func
         public void OnClientConnect()
         {

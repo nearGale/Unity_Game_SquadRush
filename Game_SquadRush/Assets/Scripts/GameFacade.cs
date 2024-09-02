@@ -43,6 +43,7 @@ namespace RushRush
 
             ClientMessageSystem.Instance,
             ClientRoomSystem.Instance,
+            ClientInputSystem.Instance,
             
             // ==================================
             // 战斗中系统，加速追帧就跑这几个系统

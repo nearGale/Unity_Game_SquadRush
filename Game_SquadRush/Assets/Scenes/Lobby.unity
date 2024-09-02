@@ -1823,7 +1823,6 @@ Transform:
   - {fileID: 2020664448}
   - {fileID: 595577061}
   - {fileID: 216608087}
-  - {fileID: 634812074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &272096001
@@ -4874,7 +4873,7 @@ GameObject:
   - component: {fileID: 634812072}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4947,11 +4946,11 @@ Transform:
   m_GameObject: {fileID: 634812071}
   serializedVersion: 2
   m_LocalRotation: {x: -0.036799595, y: 0.88958097, z: -0.44942835, w: -0.07284034}
-  m_LocalPosition: {x: 1.6267796, y: 11.284935, z: 8.741294}
+  m_LocalPosition: {x: 3.6313076, y: 11.284935, z: 9.527915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 266618424}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &637486461
 PrefabInstance:
@@ -16514,6 +16513,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 266618424}
   - {fileID: 125468725}
+  - {fileID: 634812074}
   - {fileID: 1107173714}
   - {fileID: 52866146}
   - {fileID: 1363661070}
